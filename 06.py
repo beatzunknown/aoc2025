@@ -8,16 +8,17 @@ cw_rot = lambda matrix: list(map(list, zip(*reversed(matrix))))
 ccw_rot = lambda matrix: list(map(list, zip(*matrix)))[::-1]
 ops = {'*': math.prod, '+': sum}
 
-data = [l.split() for l in data_orig]
+problems = ccw_rot([l.split() for l in data_orig])
 
 part_1 = 0
-for c in range(len(data[0])):
-	operator = data[-1][c]
-	nums = [int(row[c]) for row in data[:-1]]
+for problem in problems:
+	operator = problem[-1]
+	nums = [int(num) for num in problem[:-1]]
 	part_1 += ops[operator](nums)
 
 # for part 2: rotate CCW, group by problems, then solve each row (was column before rotate)
 rotated_data = ccw_rot(data_orig)
+# grouping is by row that is all empty space
 grouped_data = groupby(rotated_data, key=lambda group: all(not x.strip() for x in group))
 problems = [list(g) for k, g in grouped_data if not k]
 

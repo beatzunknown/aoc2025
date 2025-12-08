@@ -1,4 +1,5 @@
 import math
+from collections import defaultdict
 from functools import lru_cache
 from itertools import groupby
 

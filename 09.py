@@ -1,7 +1,5 @@
 from itertools import combinations
 
-calc_area = lambda p1, p2: (abs(p1[0] - p2[0])+1) * (abs(p1[1] - p2[1])+1)
-
 with open('09.txt', 'r') as f:
 	# points are (x, y) tuples where top-left coord is (0, 0)
 	points = [tuple(map(int, l.rstrip().split(','))) for l in f.readlines()]
@@ -25,7 +23,7 @@ def no_lines_overlap_with_rect(p1, p2):
 
 part_1 = part_2 = 0
 for point1, point2 in combinations(points, 2):
-	area = calc_area(point1, point2)
+	area = (abs(point1[0] - point2[0]) + 1) * (abs(point1[1] - point2[1]) + 1)
 	part_1 = max(part_1, area)
 	if area > part_2 and no_lines_overlap_with_rect(point1, point2):
 		part_2 = max(part_2, area)

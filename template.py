@@ -1,7 +1,7 @@
 import math
 from collections import defaultdict
 from functools import lru_cache
-from itertools import groupby
+from itertools import combinations, groupby
 
 with open('xx.txt', 'r') as f:
 	data = [l.rstrip() for l in f.readlines()]

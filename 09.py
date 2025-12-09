@@ -4,6 +4,16 @@ with open('09.txt', 'r') as f:
 	# points are (x, y) tuples where top-left coord is (0, 0)
 	points = [tuple(map(int, l.rstrip().split(','))) for l in f.readlines()]
 
+'''
+The trick for part 2 (is rectangle fully in polygon) is
+realising you don’t need to validate if a rectangle corner
+is in the red/green polygon (which I attempted first). You
+only need to validate if any other lines have a non-border
+overlap with the rectangle. If it does, you know there’s a
+part of the rectangle that’s not green/red because there’s
+“something else” inside it.
+'''
+
 def no_lines_overlap_with_rect(p1, p2):
 	# rectangle corner coordinates, where (x1, y1) is upper left, and (x2, y2) bottom right
 	rect_x1, rect_x2 = sorted([p1[0], p2[0]])

@@ -1,7 +1,8 @@
 import math
 from collections import defaultdict
-from functools import lru_cache
+from functools import lru_cache, reduce
 from itertools import combinations, groupby
+from z3 import Int, Optimize
 
 with open('xx.txt', 'r') as f:
 	data = [l.rstrip() for l in f.readlines()]

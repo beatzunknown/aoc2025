@@ -1,8 +1,5 @@
 from itertools import groupby
 
-cw_rot = lambda l: list(map(list, zip(*reversed(l))))
-flip = lambda l: [l[i][::-1] for i in range(len(l))]
-
 with open('12.txt', 'r') as f:
 	data = [l.rstrip() for l in f.readlines()]
 	grouped_data = groupby(data, key=lambda group: all(not x.strip() for x in group))
